@@ -9,10 +9,6 @@ from quantagonia.qubo import QuboModel
 from quantagonia.enums import HybridSolverOptSenses
 from quantagonia import HybridSolver, HybridSolverParameters
 
-# --- Add a placeholder for stocks and tickers for demonstration ---
-# In a real scenario, you'd load your actual stock data and define your tickers.
-# For this example, let's create some dummy data and tickers.
-
 tickers = ["AAPL", "GOOGL", "JNJ", "JPM", "MSFT"] 
 start_date = "2020-01-01"
 end_date = "2025-12-31"
@@ -38,8 +34,8 @@ cov_matrix_np = cov_matrix.values # Usar como numpy array para pyqubo
 num_assets = len(tickers)
 
 # K+1 niveles discretos para los pesos w_i in {0, 1/K, 2/K, ..., K/K}
-# Por ejemplo, K=3 significa que los pesos pueden ser 0.0, 0.25, ..., 1.0
-K = 4 # Puedes ajustar este valor. Mayor K -> más precisión, más qubits.
+# Por ejemplo, K=4 significa que los pesos pueden ser 0.0, 0.25, ..., 1.0
+K = 4 
 
 # Variables binarias x_i_k
 # x[i][k] = 1 si el activo 'i' tiene el peso k/K, y 0 en caso contrario.
@@ -172,14 +168,6 @@ try:
             for k_dummy in range(1, K + 1):
                 label_dummy = f'x[{i}][{k_dummy}]'
                 solved_variables_dict[label_dummy] = 0
-
-    # decoded_solution = model_pyqubo.decode_sample(solved_variables_dict, vartype='BINARY')
-
-    # print("\nSolución decodificada por PyQUBO:")
-    # print(decoded_solution.sample)
-    # print(f"Energía de la solución (calculada por PyQUBO): {decoded_solution.energy}")
-    # print(f"Violaciones de restricciones: {decoded_solution.constraints(only_broken=True)}")
-
 
     print("\n--- ¡Aquí tienes el portafolio optimizado! ---")
     print("-" * 40)
