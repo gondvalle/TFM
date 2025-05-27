@@ -13,7 +13,7 @@ from quantagonia import HybridSolver, HybridSolverParameters
 # In a real scenario, you'd load your actual stock data and define your tickers.
 # For this example, let's create some dummy data and tickers.
 
-tickers = ["AAPL", "GOOGL", "JNJ", "JPM", "MSFT"] # <<< IMPORTANT: REPLACE WITH YOUR ACTUAL TICKERS
+tickers = ["AAPL", "GOOGL", "JNJ", "JPM", "MSFT"]
 start_date = "2020-01-01"
 end_date = "2025-12-31"
 
